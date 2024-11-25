@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where Is My Classroom?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Where Is My Classroom?</h1>
+    <p>Enter the name of your classroom below to open it in Google Maps:</p>
+
+    <!-- Input form to enter classroom name -->
+    <input type="text" id="classroom" placeholder="Enter classroom name">
+    <button onclick="findClassroom()">Find Classroom</button>
+
+    <script>
+        function findClassroom() {
+            // Get the classroom input value
+            var classroom = document.getElementById("classroom").value;
+            var location = "";
+
+            // Mapping classroom names to coordinates (latitude, longitude)
+            var classroomLocations = {
+                "Room 101": "40.712776,-74.005974", // Example coordinates
+                "Room 102": "40.713776,-74.004974", // Example coordinates
+                "Room 103": "40.714776,-74.003974", // Example coordinates
+                // Add more rooms and their coordinates here
+            };
+
+            // Check if the classroom exists in the dictionary
+            if (classroomLocations[classroom]) {
+                location = classroomLocations[classroom];
+                // Open the location in Google Maps
+                window.open("https://www.google.com/maps?q=" + location, "_blank");
+            } else {
+                alert("Classroom not found! Please enter a valid classroom name.");
+            }
+        }
+    </script>
+</body>
+</html>
